@@ -1,0 +1,26 @@
+const MAJOR_ARCANA = [
+  { id: 0, name: '愚者', nameEn: 'The Fool', upright: '新的开始、自由、冒险、天真', reversed: '鲁莽、冒失、不计后果', description: '愚者代表着一段全新旅程的开始，充满无限可能。', advice: '勇敢迈出第一步，但也要保持警觉。' },
+  { id: 1, name: '魔术师', nameEn: 'The Magician', upright: '创造力、技能、意志力、自信', reversed: '操控、欺骗、才能浪费', description: '魔术师象征着你拥有实现目标的一切资源。', advice: '相信自己的能力，将想法付诸行动。' },
+  { id: 2, name: '女祭司', nameEn: 'The High Priestess', upright: '直觉、潜意识、神秘、智慧', reversed: '忽视直觉、表面化、秘密', description: '女祭司提醒你倾听内心的声音。', advice: '静下心来，相信你的直觉指引。' },
+  { id: 3, name: '女皇', nameEn: 'The Empress', upright: '丰盛、母性、自然、创造', reversed: '依赖、过度保护、匮乏感', description: '女皇象征着生命的丰盈与创造力。', advice: '享受生活中的美好，培养你的创造力。' },
+  { id: 4, name: '皇帝', nameEn: 'The Emperor', upright: '权威、结构、稳定、领导力', reversed: '专制、僵化、控制欲', description: '皇帝代表着秩序与权威的力量。', advice: '建立清晰的规则和结构，承担责任。' },
+  { id: 5, name: '教皇', nameEn: 'The Hierophant', upright: '传统、信仰、指导、教育', reversed: '打破常规、反叛、新思路', description: '教皇象征着精神指引和传统智慧。', advice: '寻求导师的指引，或成为他人的引路人。' },
+  { id: 6, name: '恋人', nameEn: 'The Lovers', upright: '爱情、选择、和谐、价值观', reversed: '失衡、冲突、错误选择', description: '恋人牌代表着重要的选择与深层连接。', advice: '跟随内心做出选择，珍惜真挚的情感。' },
+  { id: 7, name: '战车', nameEn: 'The Chariot', upright: '胜利、意志、决心、控制', reversed: '失控、攻击性、方向迷失', description: '战车象征着凭借坚定意志取得胜利。', advice: '保持专注和决心，你终将抵达目标。' },
+  { id: 8, name: '力量', nameEn: 'Strength', upright: '勇气、耐心、内在力量、慈悲', reversed: '自我怀疑、脆弱、缺乏信心', description: '力量牌代表着温柔而坚定的内在力量。', advice: '用耐心和慈悲面对挑战，内在力量比你想象的更强大。' },
+  { id: 9, name: '隐者', nameEn: 'The Hermit', upright: '内省、独处、智慧、探索', reversed: '孤立、逃避、固执己见', description: '隐者象征着通过独处和反思获得智慧。', advice: '给自己独处的时间，深入思考人生方向。' },
+  { id: 10, name: '命运之轮', nameEn: 'Wheel of Fortune', upright: '转变、机遇、命运、循环', reversed: '厄运、抗拒改变、失控', description: '命运之轮提醒你，变化是永恒的法则。', advice: '接受变化，抓住机遇，一切都在流转之中。' },
+  { id: 11, name: '正义', nameEn: 'Justice', upright: '公正、真相、因果、平衡', reversed: '不公、偏见、逃避责任', description: '正义牌象征着因果法则和公正的力量。', advice: '诚实面对自己和他人，公正地做出决定。' },
+  { id: 12, name: '倒吊人', nameEn: 'The Hanged Man', upright: '牺牲、等待、新视角、放下', reversed: '拖延、抗拒牺牲、无意义等待', description: '倒吊人代表着通过换个角度看问题获得领悟。', advice: '试着换一个角度看待困境，有时等待也是一种智慧。' },
+  { id: 13, name: '死神', nameEn: 'Death', upright: '结束、转变、重生、放下', reversed: '抗拒改变、恐惧、停滞', description: '死神牌并非字面意义的死亡，而是象征深刻的转变。', advice: '勇敢地告别过去，为新的开始腾出空间。' },
+  { id: 14, name: '节制', nameEn: 'Temperance', upright: '平衡、中庸、耐心、调和', reversed: '失衡、过度、缺乏耐心', description: '节制牌象征着在极端之间找到平衡。', advice: '保持中庸之道，凡事适度，耐心等待。' },
+  { id: 15, name: '恶魔', nameEn: 'The Devil', upright: '束缚、欲望、诱惑、执念', reversed: '解脱、打破束缚、觉醒', description: '恶魔牌提醒你审视那些束缚你的执念。', advice: '认清是什么在束缚你，你有能力打破它。' },
+  { id: 16, name: '塔', nameEn: 'The Tower', upright: '突变、崩塌、觉醒、真相', reversed: '逃避灾难、恐惧改变、延迟', description: '塔牌象征着突如其来的剧变，但也是觉醒的契机。', advice: '在崩塌中寻找真相，废墟之上将重建更坚固的堡垒。' },
+  { id: 17, name: '星星', nameEn: 'The Star', upright: '希望、灵感、宁静、治愈', reversed: '失望、失去信心、断连', description: '星星牌带来希望与治愈的光芒。', advice: '保持希望，即使在最黑暗的时刻，星光依然指引着你。' },
+  { id: 18, name: '月亮', nameEn: 'The Moon', upright: '幻象、恐惧、潜意识、直觉', reversed: '真相浮现、释放恐惧、清明', description: '月亮牌提醒你注意表象之下的真相。', advice: '不要被表象迷惑，倾听潜意识的声音。' },
+  { id: 19, name: '太阳', nameEn: 'The Sun', upright: '快乐、成功、活力、光明', reversed: '暂时的挫折、过度乐观', description: '太阳牌是最积极的牌之一，象征着光明与成功。', advice: '享受当下的快乐和成功，让阳光照亮你的道路。' },
+  { id: 20, name: '审判', nameEn: 'Judgement', upright: '觉醒、重生、反思、召唤', reversed: '自我怀疑、拒绝反思、逃避', description: '审判牌象征着深刻的自我反思和重生。', advice: '审视过去的经历，接受召唤，迎接新的自己。' },
+  { id: 21, name: '世界', nameEn: 'The World', upright: '完成、圆满、成就、整合', reversed: '未完成、缺乏闭合、延迟', description: '世界牌象征着一个周期的圆满完成。', advice: '庆祝你的成就，一个完整的循环即将画上句号。' },
+]
+
+export default MAJOR_ARCANA
