@@ -117,11 +117,17 @@ export default function SpreadPage() {
         {step === STEPS.RESULT && (
           <motion.div key="result" exit={{ opacity: 0 }} className="space-y-8">
             <SpreadLayout cards={drawnCards} spread={selectedSpread} />
-            <ReadingResult readings={readings} />
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.48 + 0.8 + (selectedSpread.cardCount - 1) * 0.15 + 0.3, duration: 0.4 }}
+            >
+              <ReadingResult readings={readings} />
+            </motion.div>
             <div className="text-center">
               <button
                 onClick={handleReset}
-                className="px-6 py-2.5 border border-mystic-border/60 text-mystic-text-muted rounded-xl hover:border-mystic-gold/40 hover:text-mystic-gold transition-all duration-300 text-sm"
+                className="px-6 py-2.5 border border-mystic-border/60 text-mystic-text-muted rounded-xl hover:border-mystic-gold/40 hover:text-mystic-gold transition-all duration-300 text-sm cursor-pointer"
               >
                 重新占卜
               </button>

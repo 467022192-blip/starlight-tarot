@@ -95,7 +95,7 @@ export default function DailyPage() {
                   className="mt-8 p-5 sm:p-6 rounded-2xl bg-mystic-surface/80 border border-mystic-border/60 w-full max-w-md backdrop-blur-sm"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.2 }}
+                  transition={{ delay: 1.5 }}
                 >
                   <div className="text-center mb-4">
                     <h2 className="text-mystic-gold text-xl font-bold font-display">{card.name}</h2>

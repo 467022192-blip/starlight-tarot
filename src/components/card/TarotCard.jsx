@@ -69,7 +69,7 @@ export default function TarotCard({ card, isReversed = false, onClick, delay = 0
       <motion.div
         initial={{ rotateY: 0 }}
         animate={{ rotateY: isFlipped ? 180 : 0 }}
-        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        transition={{ duration: 0.48, ease: 'easeInOut' }}
         style={{ transformStyle: 'preserve-3d', perspective: 800 }}
       >
         <div style={{ backfaceVisibility: 'hidden', position: isFlipped ? 'absolute' : 'relative' }}>
