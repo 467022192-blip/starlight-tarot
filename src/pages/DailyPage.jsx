@@ -19,6 +19,8 @@ export default function DailyPage() {
 
   const card = drawnCards[0]
 
+  if (hasDrawn && !card) return null
+
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12">
       <motion.h1

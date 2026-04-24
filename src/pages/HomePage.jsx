@@ -80,9 +80,7 @@ export default function HomePage() {
         </h1>
 
         <p className="text-mystic-text-muted text-sm sm:text-lg max-w-md mx-auto leading-relaxed">
-          塔罗牌是连接宇宙智慧的桥梁，每张牌都承载着古老的启示。
-          <br className="hidden sm:block" />
-          在这里，你将获得来自神秘领域的指引。
+          塔罗牌是连接宇宙智慧的桥梁，你将获得来自神秘领域的指引，开始探索吧👇🏻
         </p>
 
         <div className="mt-6 flex justify-center gap-2">
@@ -118,12 +116,7 @@ export default function HomePage() {
               <p className="text-mystic-text-muted text-sm leading-relaxed">
                 {feature.description}
               </p>
-              <div className="mt-4 flex items-center text-mystic-gold/50 text-xs group-hover:text-mystic-gold transition-colors duration-200">
-                <span>开始探索</span>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 ml-1 group-hover:ml-2 transition-all duration-200">
-                  <path fillRule="evenodd" d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" clipRule="evenodd" />
-                </svg>
-              </div>
+
             </Link>
           </motion.div>
         ))}

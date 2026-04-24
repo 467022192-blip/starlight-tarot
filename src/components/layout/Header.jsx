@@ -35,7 +35,7 @@ export default function Header() {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
             <path fillRule="evenodd" d="M9 4.5c-.683 0-1.274.48-1.424 1.14l-.462 1.962a7.48 7.48 0 01-3.012 4.315l-1.662 1.12a1.5 1.5 0 000 2.49l1.662 1.12a7.48 7.48 0 013.012 4.315l.462 1.962a1.5 1.5 0 002.848 0l.462-1.962a7.48 7.48 0 013.012-4.315l1.662-1.12a1.5 1.5 0 000-2.49l-1.662-1.12a7.48 7.48 0 01-3.012-4.315l-.462-1.962A1.5 1.5 0 009 4.5z" clipRule="evenodd" />
           </svg>
-          <span className="font-display">塔罗占卜</span>
+          <span className="font-display">星光塔罗</span>
         </Link>
 
         <div className="hidden sm:flex gap-1">
