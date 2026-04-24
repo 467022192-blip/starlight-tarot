@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-mystic-bg: #0a0a1a;
+  --color-mystic-surface: #12122a;
+  --color-mystic-card: #1a1a3e;
+  --color-mystic-gold: #d4af37;
+  --color-mystic-gold-light: #f0d060;
+  --color-mystic-purple: #6b4c9a;
+  --color-mystic-text: #e8e0f0;
+  --color-mystic-text-muted: #8a7fa8;
+  --color-mystic-border: #2a2a5a;
+}
