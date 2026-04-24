@@ -14,7 +14,7 @@ export default function PersonalityPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        🌙 性格测试
+        性格测试
       </motion.h1>
       <motion.p
         className="text-mystic-text-muted text-sm text-center mb-8"

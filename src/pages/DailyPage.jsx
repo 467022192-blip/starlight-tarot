@@ -26,7 +26,7 @@ export default function DailyPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        ☀️ 每日运势
+        每日运势
       </motion.h1>
       <motion.p
         className="text-mystic-text-muted text-sm text-center mb-8"

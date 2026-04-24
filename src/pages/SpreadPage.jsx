@@ -38,7 +38,7 @@ export default function SpreadPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        🔮 牌阵占卜
+        牌阵占卜
       </motion.h1>
       <motion.p
         className="text-mystic-text-muted text-sm text-center mb-8"

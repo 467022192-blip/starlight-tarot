@@ -1,17 +1,39 @@
 import { motion } from 'framer-motion'
 import majorArcana from '../../data/majorArcana'
 
+const ELEMENT_ICONS = {
+  fire: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-orange-400">
+      <path fillRule="evenodd" d="M12.963 2.286a.75.75 0 00-1.071-.136 9.742 9.742 0 00-3.539 6.177A7.547 7.547 0 016.648 6.61a.75.75 0 00-1.152.082A9 9 0 1015.68 4.534a7.46 7.46 0 01-2.717-2.248zM15.75 14.25a3.75 3.75 0 11-7.313-1.172c.628.465 1.35.81 2.133 1a5.99 5.99 0 011.925-3.545 3.75 3.75 0 013.255 3.717z" clipRule="evenodd" />
+    </svg>
+  ),
+  water: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-blue-400">
+      <path fillRule="evenodd" d="M12 2.25c0 0-6.75 8.25-6.75 12a6.75 6.75 0 0013.5 0C18.75 10.5 12 2.25 12 2.25z" clipRule="evenodd" />
+    </svg>
+  ),
+  air: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-cyan-400">
+      <path d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+    </svg>
+  ),
+  earth: (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-green-500">
+      <path d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.625 6c-.54 0-.828.419-.936.634a1.963 1.963 0 00-.189.866c0 .298.059.605.189.866.108.215.395.634.936.634.54 0 .828-.419.936-.634.13-.26.189-.568.189-.866 0-.298-.059-.605-.189-.866-.108-.215-.395-.634-.936-.634z" />
+    </svg>
+  ),
+}
+
+const TRAIT_LABELS = {
+  fire: { label: '火', color: 'bg-orange-400' },
+  water: { label: '水', color: 'bg-blue-400' },
+  air: { label: '风', color: 'bg-cyan-400' },
+  earth: { label: '土', color: 'bg-green-500' },
+}
+
 export default function ResultProfile({ result }) {
   const { type, traits, dominant } = result
   const suggestedCard = majorArcana[type.cardSuggestion]
-
-  const traitLabels = {
-    fire: { label: '🔥 火', color: 'bg-orange-500' },
-    water: { label: '💧 水', color: 'bg-blue-500' },
-    air: { label: '💨 风', color: 'bg-cyan-400' },
-    earth: { label: '🌍 土', color: 'bg-green-600' },
-  }
-
   const maxTrait = Math.max(...Object.values(traits))
 
   return (
@@ -22,9 +44,7 @@ export default function ResultProfile({ result }) {
     >
       <div className="text-center p-6 sm:p-8 rounded-2xl bg-mystic-surface/80 border border-mystic-gold/30 backdrop-blur-sm">
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-mystic-gold/10 flex items-center justify-center border border-mystic-gold/20">
-          <span className="text-2xl">
-            {dominant === 'fire' ? '🔥' : dominant === 'water' ? '💧' : dominant === 'air' ? '💨' : '🌍'}
-          </span>
+          {ELEMENT_ICONS[dominant]}
         </div>
         <h2 className="text-mystic-gold text-2xl font-bold font-display mb-1">{type.name}</h2>
         <p className="text-mystic-text-muted text-sm mb-4">元素：{type.element} · 对应花色：{type.suit}</p>
@@ -36,13 +56,16 @@ export default function ResultProfile({ result }) {
         <div className="space-y-3">
           {Object.entries(traits).map(([key, value]) => (
             <div key={key} className="flex items-center gap-3">
-              <span className="text-sm w-14 flex-shrink-0">{traitLabels[key].label}</span>
-              <div className="flex-1 h-3 bg-mystic-bg/60 rounded-full overflow-hidden">
+              <div className="flex items-center gap-1.5 w-14 flex-shrink-0">
+                <div className={`w-2 h-2 rounded-full ${TRAIT_LABELS[key].color}`} />
+                <span className="text-sm text-mystic-text">{TRAIT_LABELS[key].label}</span>
+              </div>
+              <div className="flex-1 h-2.5 bg-mystic-bg/60 rounded-full overflow-hidden">
                 <motion.div
                   className={`h-full rounded-full ${key === dominant ? 'bg-mystic-gold' : 'bg-mystic-purple/50'}`}
                   initial={{ width: 0 }}
                   animate={{ width: `${(value / maxTrait) * 100}%` }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
                 />
               </div>
               <span className="text-mystic-text-muted text-xs w-8 text-right">{value}</span>
@@ -53,11 +76,11 @@ export default function ResultProfile({ result }) {
 
       <div className="grid grid-cols-2 gap-4">
         <div className="p-4 rounded-xl bg-mystic-surface/70 border border-mystic-border/50">
-          <h3 className="text-mystic-gold font-bold font-display mb-2 text-sm">✦ 优势</h3>
+          <h3 className="text-mystic-gold font-bold font-display mb-2 text-sm">优势</h3>
           <p className="text-mystic-text text-sm leading-relaxed">{type.strengths}</p>
         </div>
         <div className="p-4 rounded-xl bg-mystic-surface/70 border border-mystic-border/50">
-          <h3 className="text-mystic-gold font-bold font-display mb-2 text-sm">✦ 挑战</h3>
+          <h3 className="text-mystic-gold font-bold font-display mb-2 text-sm">挑战</h3>
           <p className="text-mystic-text text-sm leading-relaxed">{type.challenges}</p>
         </div>
       </div>

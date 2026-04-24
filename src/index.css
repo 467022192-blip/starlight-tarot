@@ -1,18 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-mystic-bg: #0a0a1a;
-  --color-mystic-surface: #12122a;
-  --color-mystic-card: #1a1a3e;
+  --color-mystic-bg-deep: #050510;
+  --color-mystic-surface: #111128;
+  --color-mystic-card: #181840;
   --color-mystic-gold: #d4af37;
   --color-mystic-gold-light: #f0d060;
-  --color-mystic-purple: #6b4c9a;
-  --color-mystic-text: #e8e0f0;
-  --color-mystic-text-muted: #8a7fa8;
+  --color-mystic-gold-dim: #a08520;
+  --color-mystic-purple: #7c3aed;
+  --color-mystic-purple-light: #a78bfa;
+  --color-mystic-text: #eae4f4;
+  --color-mystic-text-muted: #9490a8;
   --color-mystic-border: #2a2a5a;
+  --color-mystic-border-light: #3a3a6a;
 
-  --font-sans: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", system-ui, -apple-system, sans-serif;
-  --font-display: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
+  --font-sans: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", system-ui, -apple-system, sans-serif;
+  --font-display: "Playfair Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", serif;
 }
 
 body {
@@ -21,9 +26,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: var(--font-sans);
+  background: var(--color-mystic-bg);
 }
 
 #root {
   min-height: 100vh;
   min-height: 100dvh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

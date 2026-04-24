@@ -8,7 +8,7 @@ export default function SpreadSelector({ selected, onSelect }) {
         <motion.button
           key={spread.id}
           onClick={() => onSelect(spread)}
-          className={`p-5 sm:p-6 rounded-2xl border text-left transition-all duration-300 ${
+          className={`p-5 sm:p-6 rounded-2xl border text-left transition-all duration-200 cursor-pointer ${
             selected?.id === spread.id
               ? 'border-mystic-gold/60 bg-mystic-gold/10 shadow-lg shadow-mystic-gold/5'
               : 'border-mystic-border/60 bg-mystic-surface/60 hover:border-mystic-gold/30 hover:bg-mystic-surface'
@@ -18,9 +18,9 @@ export default function SpreadSelector({ selected, onSelect }) {
           transition={{ delay: index * 0.1 }}
         >
           <div className="flex items-center gap-2 mb-2">
-            <span className="text-mystic-gold text-lg">
-              {spread.cardCount === 1 ? '☀️' : spread.cardCount === 3 ? '🔮' : '⭐'}
-            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className={`w-5 h-5 ${selected?.id === spread.id ? 'text-mystic-gold' : 'text-mystic-gold-dim'}`}>
+              <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6z" />
+            </svg>
             <h3 className={`text-base font-bold font-display ${selected?.id === spread.id ? 'text-mystic-gold' : 'text-mystic-text'}`}>
               {spread.name}
             </h3>
