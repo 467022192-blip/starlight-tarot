@@ -1,27 +1,30 @@
-import { useMemo } from 'react'
+import { useState } from 'react'
+
+function generateStars() {
+  return Array.from({ length: 120 }, (_, i) => ({
+    id: i,
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    size: Math.random() * 2.5 + 0.5,
+    opacity: Math.random() * 0.6 + 0.2,
+    duration: Math.random() * 4 + 2,
+    delay: Math.random() * 3,
+  }))
+}
+
+function generateShootingStars() {
+  return Array.from({ length: 3 }, (_, i) => ({
+    id: i,
+    top: `${10 + Math.random() * 40}%`,
+    left: `${Math.random() * 60}%`,
+    duration: 6 + Math.random() * 8,
+    delay: i * 4 + Math.random() * 3,
+  }))
+}
 
 export default function StarBackground() {
-  const stars = useMemo(() => {
-    return Array.from({ length: 120 }, (_, i) => ({
-      id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      size: Math.random() * 2.5 + 0.5,
-      opacity: Math.random() * 0.6 + 0.2,
-      duration: Math.random() * 4 + 2,
-      delay: Math.random() * 3,
-    }))
-  }, [])
-
-  const shootingStars = useMemo(() => {
-    return Array.from({ length: 3 }, (_, i) => ({
-      id: i,
-      top: `${10 + Math.random() * 40}%`,
-      left: `${Math.random() * 60}%`,
-      duration: 6 + Math.random() * 8,
-      delay: i * 4 + Math.random() * 3,
-    }))
-  }, [])
+  const [stars] = useState(generateStars)
+  const [shootingStars] = useState(generateShootingStars)
 
   return (
     <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">

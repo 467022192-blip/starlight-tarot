@@ -19,6 +19,6 @@ export function generateSummary(readings) {
   return `本次占卜的核心主题围绕${keywords.join('、')}展开。`
 }
 
-export async function generateAIReading(cards, question) {
+export async function generateAIReading() {
   throw new Error('AI 解读功能尚未接入，请使用预设解读。')
 }
