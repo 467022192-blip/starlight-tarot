@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { THEMES } from '../../data/spreads'
 
 const NAV_ITEMS = [
   { path: '/', label: '首页', Icon: () => (
@@ -7,56 +8,51 @@ const NAV_ITEMS = [
       <path fillRule="evenodd" d="M9.293 2.293a1 1 0 011.414 0l7 7A1 1 0 0117 11h-1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-3a1 1 0 00-1-1H9a1 1 0 00-1 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-6H3a1 1 0 01-.707-1.707l7-7z" clipRule="evenodd" />
     </svg>
   )},
-  { path: '/daily', label: '每日运势', Icon: () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-      <path d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6z" />
-    </svg>
-  )},
-  { path: '/spread', label: '决策指引', Icon: () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-      <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
-    </svg>
-  )},
-  { path: '/personality', label: '性格测试', Icon: () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-      <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
-    </svg>
-  )},
+  ...THEMES.map((theme) => ({
+    path: theme.route,
+    label: theme.name,
+    themeId: theme.id,
+  })),
 ]
+
+const isActive = (pathname, itemPath) => {
+  if (itemPath === '/') return pathname === '/'
+  return pathname === itemPath || pathname.startsWith(itemPath + '/')
+}
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
   return (
-    <header className="sticky top-0 z-50 bg-mystic-bg/70 backdrop-blur-lg border-b border-mystic-border/40">
-      <nav className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-        <Link to="/" className="text-mystic-gold text-lg font-bold tracking-wider flex items-center gap-2 cursor-pointer">
+    <header className="sticky top-0 z-50 glass-strong">
+      <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+        <Link to="/" className="text-cyber-accent text-lg font-bold tracking-wider flex items-center gap-2 cursor-pointer glow-accent flex-shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
             <path fillRule="evenodd" d="M9 4.5c-.683 0-1.274.48-1.424 1.14l-.462 1.962a7.48 7.48 0 01-3.012 4.315l-1.662 1.12a1.5 1.5 0 000 2.49l1.662 1.12a7.48 7.48 0 013.012 4.315l.462 1.962a1.5 1.5 0 002.848 0l.462-1.962a7.48 7.48 0 013.012-4.315l1.662-1.12a1.5 1.5 0 000-2.49l-1.662-1.12a7.48 7.48 0 01-3.012-4.315l-.462-1.962A1.5 1.5 0 009 4.5z" clipRule="evenodd" />
           </svg>
           <span className="font-display">星光塔罗</span>
         </Link>
 
-        <div className="hidden sm:flex gap-1">
+        <div className="hidden lg:flex gap-0.5">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm transition-colors duration-200 cursor-pointer ${
-                location.pathname === item.path
-                  ? 'text-mystic-gold bg-mystic-gold/10'
-                  : 'text-mystic-text-muted hover:text-mystic-gold hover:bg-mystic-gold/5'
+              className={`flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs transition-all duration-200 cursor-pointer whitespace-nowrap ${
+                isActive(location.pathname, item.path)
+                  ? 'text-cyber-accent bg-cyber-accent/10'
+                  : 'text-cyber-text-muted hover:text-cyber-accent hover:bg-cyber-accent/5'
               }`}
             >
-              <item.Icon />
+              {item.Icon && <item.Icon />}
               {item.label}
             </Link>
           ))}
         </div>
 
         <button
-          className="sm:hidden text-mystic-gold text-xl leading-none cursor-pointer p-1"
+          className="lg:hidden text-cyber-accent text-xl leading-none cursor-pointer p-1"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? '关闭菜单' : '打开菜单'}
         >
@@ -73,19 +69,18 @@ export default function Header() {
       </nav>
 
       {isOpen && (
-        <div className="sm:hidden border-t border-mystic-border/40 bg-mystic-bg/95 backdrop-blur-lg">
+        <div className="lg:hidden glass-strong">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.path}
               to={item.path}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center gap-2 px-6 py-3.5 text-sm transition-colors duration-200 cursor-pointer ${
-                location.pathname === item.path
-                  ? 'text-mystic-gold bg-mystic-gold/10'
-                  : 'text-mystic-text-muted hover:text-mystic-gold hover:bg-mystic-gold/5'
+              className={`block px-6 py-3 text-sm transition-all duration-200 cursor-pointer ${
+                isActive(location.pathname, item.path)
+                  ? 'text-cyber-accent bg-cyber-accent/10'
+                  : 'text-cyber-text-muted hover:text-cyber-accent hover:bg-cyber-accent/5'
               }`}
             >
-              <item.Icon />
               {item.label}
             </Link>
           ))}

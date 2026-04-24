@@ -11,7 +11,7 @@ export default function SpreadLayout({ cards, spread }) {
     <div className={layoutClass[spread.id] || 'flex justify-center gap-4'}>
       {cards.map((card, index) => (
         <div key={card.id} className="flex flex-col items-center">
-          <span className="text-mystic-gold text-xs mb-2 font-display">{spread.positions[index]?.name}</span>
+          <span className="text-cyber-accent text-xs mb-2 font-display">{spread.positions[index]?.name}</span>
           <TarotCard card={card} isReversed={card.isReversed} size="md" delay={index * 0.15} autoFlip flipDelay={0.8} />
         </div>
       ))}

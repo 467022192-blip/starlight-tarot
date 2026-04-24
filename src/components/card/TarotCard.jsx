@@ -24,36 +24,36 @@ export default function TarotCard({ card, isReversed = false, onClick, delay = 0
 
   const cardBack = (
     <div
-      className={`${sizeClasses[size]} rounded-xl border-2 border-mystic-gold/30 bg-mystic-card flex items-center justify-center cursor-pointer hover:border-mystic-gold/60 hover:shadow-lg hover:shadow-mystic-gold/10 transition-all duration-300`}
+      className={`${sizeClasses[size]} rounded-xl border border-cyber-purple/40 bg-cyber-card/80 flex items-center justify-center cursor-pointer hover:border-cyber-accent/50 hover:shadow-[0_0_12px_rgba(167,139,250,0.15)] transition-all duration-300 backdrop-blur-sm`}
       style={{
-        backgroundImage: `radial-gradient(circle at 50% 50%, rgba(212,175,55,0.08) 0%, transparent 70%)`,
+        backgroundImage: `radial-gradient(circle at 50% 50%, rgba(124,58,237,0.1) 0%, transparent 70%)`,
       }}
     >
       <div className="flex flex-col items-center gap-1">
-        <span className="text-mystic-gold/60 text-lg sm:text-2xl">✦</span>
-        <div className="w-6 sm:w-8 h-px bg-mystic-gold/30" />
-        <span className="text-mystic-gold/40 text-[8px] sm:text-[10px] tracking-widest">TAROT</span>
+        <span className="text-cyber-accent/50 text-lg sm:text-2xl">✦</span>
+        <div className="w-6 sm:w-8 h-px bg-cyber-purple/30" />
+        <span className="text-cyber-accent/30 text-[8px] sm:text-[10px] tracking-widest">TAROT</span>
       </div>
     </div>
   )
 
   const cardFront = (
     <div
-      className={`${sizeClasses[size]} rounded-xl border-2 border-mystic-gold bg-mystic-card p-2 sm:p-3 flex flex-col items-center justify-center text-center shadow-lg shadow-mystic-gold/10`}
+      className={`${sizeClasses[size]} rounded-xl border border-cyber-accent/40 bg-cyber-card/90 p-2 sm:p-3 flex flex-col items-center justify-center text-center shadow-[0_0_10px_rgba(167,139,250,0.1)] backdrop-blur-sm`}
       style={{
-        backgroundImage: `radial-gradient(circle at 50% 30%, rgba(212,175,55,0.08) 0%, transparent 60%)`,
+        backgroundImage: `radial-gradient(circle at 50% 30%, rgba(167,139,250,0.06) 0%, transparent 60%)`,
         transform: isReversed ? 'rotate(180deg)' : 'none',
       }}
     >
-      <span className="text-mystic-gold text-base sm:text-xl mb-0.5">✦</span>
-      <p className="text-mystic-gold text-xs sm:text-sm font-bold font-display leading-tight">{card.name}</p>
-      <p className="text-mystic-text-muted text-[8px] sm:text-[10px] mt-0.5 leading-tight">{card.nameEn}</p>
-      <div className="w-4 sm:w-6 h-px bg-mystic-gold/30 my-1" />
-      <p className="text-mystic-text-muted text-[7px] sm:text-[9px] leading-tight px-1">
+      <span className="text-cyber-accent text-base sm:text-xl mb-0.5">✦</span>
+      <p className="text-cyber-accent text-xs sm:text-sm font-bold font-display leading-tight">{card.name}</p>
+      <p className="text-cyber-text-muted text-[8px] sm:text-[10px] mt-0.5 leading-tight">{card.nameEn}</p>
+      <div className="w-4 sm:w-6 h-px bg-cyber-accent/25 my-1" />
+      <p className="text-cyber-text-muted text-[7px] sm:text-[9px] leading-tight px-1">
         {card.isReversed ? card.reversed : card.upright}
       </p>
       {isReversed && (
-        <span className="text-mystic-purple text-[8px] sm:text-[10px] mt-1 font-bold">逆位</span>
+        <span className="text-cyber-rose text-[8px] sm:text-[10px] mt-1 font-bold">逆位</span>
       )}
     </div>
   )

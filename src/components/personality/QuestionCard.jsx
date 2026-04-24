@@ -10,12 +10,12 @@ export default function QuestionCard({ question, questionIndex, totalQuestions, 
       key={question.id}
     >
       <div className="mb-6 text-center">
-        <span className="text-mystic-text-muted text-sm">
+        <span className="text-cyber-text-muted text-sm">
           {questionIndex + 1} / {totalQuestions}
         </span>
-        <div className="w-full h-1.5 bg-mystic-border/40 rounded-full mt-2 overflow-hidden">
+        <div className="w-full h-1.5 bg-cyber-border/40 rounded-full mt-2 overflow-hidden">
           <motion.div
-            className="h-full bg-gradient-to-r from-mystic-gold/60 to-mystic-gold rounded-full"
+            className="h-full bg-gradient-to-r from-cyber-purple/50 to-cyber-accent rounded-full"
             initial={{ width: 0 }}
             animate={{ width: `${((questionIndex + 1) / totalQuestions) * 100}%` }}
             transition={{ duration: 0.4 }}
@@ -23,7 +23,7 @@ export default function QuestionCard({ question, questionIndex, totalQuestions, 
         </div>
       </div>
 
-      <h2 className="text-mystic-gold text-lg sm:text-xl font-bold font-display text-center mb-6">
+      <h2 className="text-cyber-text text-lg sm:text-xl font-bold font-display text-center mb-6">
         {question.question}
       </h2>
 
@@ -32,12 +32,12 @@ export default function QuestionCard({ question, questionIndex, totalQuestions, 
           <motion.button
             key={index}
             onClick={() => onAnswer(option)}
-            className="w-full p-4 rounded-xl border border-mystic-border/50 bg-mystic-surface/60 text-left text-mystic-text hover:border-mystic-gold/40 hover:bg-mystic-gold/5 transition-all duration-200 backdrop-blur-sm"
+            className="w-full p-4 rounded-xl border border-cyber-border bg-cyber-surface/40 text-left text-cyber-text hover:border-cyber-accent/30 hover:bg-cyber-accent/5 transition-all duration-200 backdrop-blur-sm cursor-pointer"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.08 }}
           >
-            <span className="text-mystic-gold/60 mr-2 text-sm">{String.fromCharCode(65 + index)}.</span>
+            <span className="text-cyber-accent/60 mr-2 text-sm">{String.fromCharCode(65 + index)}.</span>
             {option.text}
           </motion.button>
         ))}

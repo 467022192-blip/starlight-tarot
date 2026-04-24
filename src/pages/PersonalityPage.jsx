@@ -10,14 +10,14 @@ export default function PersonalityPage() {
   return (
     <div className="max-w-2xl mx-auto px-4 py-8 sm:py-12">
       <motion.h1
-        className="text-2xl sm:text-3xl font-bold font-display text-mystic-gold text-center mb-2"
+        className="text-2xl sm:text-3xl font-bold font-display text-cyber-text text-center mb-2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
         性格测试
       </motion.h1>
       <motion.p
-        className="text-mystic-text-muted text-sm text-center mb-8"
+        className="text-cyber-text-muted text-sm text-center mb-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -40,7 +40,7 @@ export default function PersonalityPage() {
           <div className="text-center">
             <button
               onClick={reset}
-              className="px-6 py-2.5 border border-mystic-border/60 text-mystic-text-muted rounded-xl hover:border-mystic-gold/40 hover:text-mystic-gold transition-all duration-300 text-sm"
+              className="px-6 py-2.5 border border-cyber-border text-cyber-text-muted rounded-xl hover:border-cyber-accent/40 hover:text-cyber-accent transition-all duration-300 text-sm cursor-pointer"
             >
               重新测试
             </button>

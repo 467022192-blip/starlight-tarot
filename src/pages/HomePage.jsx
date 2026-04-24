@@ -9,17 +9,17 @@ const THEME_ICONS = {
     </svg>
   ),
   decision: (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-purple-400">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-cyber-accent">
       <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
     </svg>
   ),
   personality: (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-blue-400">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-cyber-purple-light">
       <path fillRule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z" clipRule="evenodd" />
     </svg>
   ),
   love: (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-rose-400">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 text-cyber-rose">
       <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
     </svg>
   ),
@@ -36,12 +36,21 @@ const THEME_ICONS = {
 }
 
 const THEME_COLORS = {
-  daily: { gradient: 'from-amber-900/20 via-mystic-card to-mystic-card', border: 'hover:border-amber-500/40', iconBg: 'bg-amber-500/10' },
-  decision: { gradient: 'from-purple-900/20 via-mystic-card to-mystic-card', border: 'hover:border-purple-500/40', iconBg: 'bg-purple-500/10' },
-  personality: { gradient: 'from-blue-900/20 via-mystic-card to-mystic-card', border: 'hover:border-blue-500/40', iconBg: 'bg-blue-500/10' },
-  love: { gradient: 'from-rose-900/20 via-mystic-card to-mystic-card', border: 'hover:border-rose-500/40', iconBg: 'bg-rose-500/10' },
-  career: { gradient: 'from-emerald-900/20 via-mystic-card to-mystic-card', border: 'hover:border-emerald-500/40', iconBg: 'bg-emerald-500/10' },
-  growth: { gradient: 'from-cyan-900/20 via-mystic-card to-mystic-card', border: 'hover:border-cyan-500/40', iconBg: 'bg-cyan-500/10' },
+  daily: { border: 'hover:border-amber-400/40 hover:shadow-[0_0_12px_rgba(245,158,11,0.12)]', iconBg: 'bg-amber-500/10' },
+  decision: { border: 'hover:border-cyber-accent/40 hover:shadow-[0_0_12px_rgba(167,139,250,0.12)]', iconBg: 'bg-cyber-accent/10' },
+  personality: { border: 'hover:border-cyber-purple-light/40 hover:shadow-[0_0_12px_rgba(196,181,253,0.12)]', iconBg: 'bg-cyber-purple-light/10' },
+  love: { border: 'hover:border-cyber-rose/40 hover:shadow-[0_0_12px_rgba(251,113,133,0.12)]', iconBg: 'bg-cyber-rose/10' },
+  career: { border: 'hover:border-emerald-400/40 hover:shadow-[0_0_12px_rgba(52,211,153,0.12)]', iconBg: 'bg-emerald-500/10' },
+  growth: { border: 'hover:border-cyan-400/40 hover:shadow-[0_0_12px_rgba(34,211,238,0.12)]', iconBg: 'bg-cyan-500/10' },
+}
+
+const THEME_ACCENT = {
+  daily: 'text-amber-400',
+  decision: 'text-cyber-accent',
+  personality: 'text-cyber-purple-light',
+  love: 'text-cyber-rose',
+  career: 'text-emerald-400',
+  growth: 'text-cyan-400',
 }
 
 const container = {
@@ -71,16 +80,16 @@ export default function HomePage() {
           animate={{ rotate: [0, 3, -3, 0] }}
           transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-14 h-14 sm:w-18 sm:h-18 text-mystic-gold">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-14 h-14 sm:w-18 sm:h-18 text-cyber-accent">
             <path fillRule="evenodd" d="M9 4.5c-.683 0-1.274.48-1.424 1.14l-.462 1.962a7.48 7.48 0 01-3.012 4.315l-1.662 1.12a1.5 1.5 0 000 2.49l1.662 1.12a7.48 7.48 0 013.012 4.315l.462 1.962a1.5 1.5 0 002.848 0l.462-1.962a7.48 7.48 0 013.012-4.315l1.662-1.12a1.5 1.5 0 000-2.49l-1.662-1.12a7.48 7.48 0 01-3.012-4.315l-.462-1.962A1.5 1.5 0 009 4.5z" clipRule="evenodd" />
           </svg>
         </motion.div>
 
-        <h1 className="text-3xl sm:text-5xl font-bold font-display text-mystic-gold mb-4 sm:mb-6 tracking-wide">
+        <h1 className="text-3xl sm:text-5xl font-bold font-display text-cyber-text mb-4 sm:mb-6 tracking-wide">
           探索命运的奥秘
         </h1>
 
-        <p className="text-mystic-text-muted text-sm sm:text-lg max-w-md mx-auto leading-relaxed">
+        <p className="text-cyber-text-muted text-sm sm:text-lg max-w-md mx-auto leading-relaxed">
           塔罗牌是连接宇宙智慧的桥梁，你将获得来自神秘领域的指引，开始探索吧👇🏻
         </p>
 
@@ -88,7 +97,7 @@ export default function HomePage() {
           {[0, 1, 2].map((i) => (
             <motion.div
               key={i}
-              className="w-1.5 h-1.5 rounded-full bg-mystic-gold/50"
+              className="w-1.5 h-1.5 rounded-full bg-cyber-accent/40"
               animate={{ opacity: [0.3, 1, 0.3] }}
               transition={{ duration: 2.5, delay: i * 0.4, repeat: Infinity }}
             />
@@ -105,19 +114,20 @@ export default function HomePage() {
         {THEMES.map((theme) => {
           const colors = THEME_COLORS[theme.id] || THEME_COLORS.daily
           const icon = THEME_ICONS[theme.id]
+          const accent = THEME_ACCENT[theme.id] || 'text-cyber-accent'
           return (
             <motion.div key={theme.id} variants={item}>
               <Link
                 to={theme.route}
-                className={`group block p-4 sm:p-6 rounded-2xl border border-mystic-border/50 bg-gradient-to-b ${colors.gradient} ${colors.border} transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-mystic-purple/10 cursor-pointer h-full`}
+                className={`group block p-4 sm:p-6 rounded-2xl glass-card ${colors.border} transition-all duration-200 hover:-translate-y-0.5 cursor-pointer h-full`}
               >
                 <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl ${colors.iconBg} flex items-center justify-center mb-3 group-hover:scale-105 transition-transform duration-200`}>
                   {icon}
                 </div>
-                <h2 className="text-mystic-gold text-base sm:text-lg font-bold font-display mb-1">
+                <h2 className={`${accent} text-base sm:text-lg font-bold font-display mb-1`}>
                   {theme.name}
                 </h2>
-                <p className="text-mystic-text-muted text-xs sm:text-sm leading-relaxed">
+                <p className="text-cyber-text-muted text-xs sm:text-sm leading-relaxed">
                   {theme.description}
                 </p>
               </Link>
@@ -132,12 +142,12 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
       >
-        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-mystic-border/40 bg-mystic-surface/50">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-mystic-gold/60">
+        <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full glass">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-cyber-accent/50">
             <path fillRule="evenodd" d="M10 1c-1.828 0-3.623.149-5.371.435a.75.75 0 00-.629.74v.659a4.503 4.503 0 012.761 1.677 4.5 4.5 0 016.478 0A4.503 4.503 0 0116 2.834v-.659a.75.75 0 00-.629-.74A33.887 33.887 0 0010 1z" clipRule="evenodd" />
           </svg>
-          <span className="text-mystic-text-muted text-xs sm:text-sm">78 张塔罗牌 · 6 种占卜方式 · 无限可能</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-mystic-gold/60">
+          <span className="text-cyber-text-muted text-xs sm:text-sm">78 张塔罗牌 · 6 种占卜方式 · 无限可能</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 text-cyber-accent/50">
             <path fillRule="evenodd" d="M10 1c-1.828 0-3.623.149-5.371.435a.75.75 0 00-.629.74v.659a4.503 4.503 0 012.761 1.677 4.5 4.5 0 016.478 0A4.503 4.503 0 0116 2.834v-.659a.75.75 0 00-.629-.74A33.887 33.887 0 0010 1z" clipRule="evenodd" />
           </svg>
         </div>

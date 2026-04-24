@@ -34,14 +34,14 @@ export default function SpreadPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 sm:py-12">
       <motion.h1
-        className="text-2xl sm:text-3xl font-bold font-display text-mystic-gold text-center mb-2"
+        className="text-2xl sm:text-3xl font-bold font-display text-cyber-text text-center mb-2"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
         决策指引
       </motion.h1>
       <motion.p
-        className="text-mystic-text-muted text-sm text-center mb-8"
+        className="text-cyber-text-muted text-sm text-center mb-8"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -53,13 +53,13 @@ export default function SpreadPage() {
         {[STEPS.SELECT, STEPS.DRAW, STEPS.RESULT].map((s) => (
           <div key={s} className="flex items-center gap-2">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold border transition-all duration-300 ${
-              step >= s ? 'border-mystic-gold/60 bg-mystic-gold/15 text-mystic-gold' : 'border-mystic-border/40 text-mystic-text-muted/50'
+              step >= s ? 'border-cyber-accent/50 bg-cyber-accent/10 text-cyber-accent' : 'border-cyber-border text-cyber-text-muted/50'
             }`}>
               {s + 1}
             </div>
             {s < STEPS.RESULT && (
               <div className={`w-8 sm:w-16 h-px transition-colors duration-300 ${
-                step > s ? 'bg-mystic-gold/40' : 'bg-mystic-border/30'
+                step > s ? 'bg-cyber-accent/30' : 'bg-cyber-border/30'
               }`} />
             )}
           </div>
@@ -74,7 +74,7 @@ export default function SpreadPage() {
               <motion.div className="text-center" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                 <button
                   onClick={() => setStep(STEPS.DRAW)}
-                  className="px-8 py-3 bg-mystic-gold/15 border border-mystic-gold/50 text-mystic-gold rounded-xl hover:bg-mystic-gold/25 hover:border-mystic-gold transition-all duration-300 shadow-lg shadow-mystic-gold/5"
+                  className="px-8 py-3 bg-cyber-accent-warm/10 border border-cyber-accent-warm/40 text-cyber-accent-warm rounded-xl hover:bg-cyber-accent-warm/20 hover:border-cyber-accent-warm/60 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] transition-all duration-300 cursor-pointer"
                 >
                   开始占卜 →
                 </button>
@@ -94,20 +94,20 @@ export default function SpreadPage() {
                 {Array.from({ length: selectedSpread.cardCount }).map((_, i) => (
                   <motion.div
                     key={i}
-                    className="w-20 h-32 sm:w-24 sm:h-40 rounded-xl border-2 border-mystic-gold/20 bg-mystic-card/50 flex items-center justify-center"
+                    className="w-20 h-32 sm:w-24 sm:h-40 rounded-xl border border-cyber-purple/30 bg-cyber-card/50 flex items-center justify-center backdrop-blur-sm"
                     animate={{ y: [0, -5, 0] }}
                     transition={{ duration: 2, delay: i * 0.2, repeat: Infinity, ease: 'easeInOut' }}
                   >
-                    <span className="text-mystic-gold/30 text-xl">✦</span>
+                    <span className="text-cyber-accent/25 text-xl">✦</span>
                   </motion.div>
                 ))}
               </motion.div>
             </div>
-            <p className="text-mystic-text-muted text-sm">静心凝神，点击下方按钮抽取塔罗牌</p>
+            <p className="text-cyber-text-muted text-sm">静心凝神，点击下方按钮抽取塔罗牌</p>
             <button
               onClick={handleDraw}
               disabled={isDrawing}
-              className="px-8 py-3 bg-mystic-gold/15 border border-mystic-gold/50 text-mystic-gold rounded-xl hover:bg-mystic-gold/25 hover:border-mystic-gold transition-all duration-300 text-base disabled:opacity-50 shadow-lg shadow-mystic-gold/5"
+              className="px-8 py-3 bg-cyber-accent-warm/10 border border-cyber-accent-warm/40 text-cyber-accent-warm rounded-xl hover:bg-cyber-accent-warm/20 hover:border-cyber-accent-warm/60 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] transition-all duration-300 text-base disabled:opacity-50 cursor-pointer"
             >
               抽牌
             </button>
@@ -127,7 +127,7 @@ export default function SpreadPage() {
             <div className="text-center">
               <button
                 onClick={handleReset}
-                className="px-6 py-2.5 border border-mystic-border/60 text-mystic-text-muted rounded-xl hover:border-mystic-gold/40 hover:text-mystic-gold transition-all duration-300 text-sm cursor-pointer"
+                className="px-6 py-2.5 border border-cyber-border text-cyber-text-muted rounded-xl hover:border-cyber-accent/40 hover:text-cyber-accent transition-all duration-300 text-sm cursor-pointer"
               >
                 重新占卜
               </button>
