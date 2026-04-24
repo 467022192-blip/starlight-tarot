@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import DailyPage from './pages/DailyPage'
 import SpreadPage from './pages/SpreadPage'
 import PersonalityPage from './pages/PersonalityPage'
+import ThemePage from './pages/ThemePage'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/daily" element={<DailyPage />} />
             <Route path="/spread" element={<SpreadPage />} />
             <Route path="/personality" element={<PersonalityPage />} />
+            <Route path="/theme/:themeId" element={<ThemePage />} />
           </Routes>
         </main>
         <Footer />

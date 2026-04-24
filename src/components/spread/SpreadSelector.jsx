@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion'
 import SPREADS from '../../data/spreads'
 
-export default function SpreadSelector({ selected, onSelect }) {
+export default function SpreadSelector({ selected, onSelect, spreads }) {
+  const displaySpreads = spreads || SPREADS
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {SPREADS.map((spread, index) => (
+      {displaySpreads.map((spread, index) => (
         <motion.button
           key={spread.id}
           onClick={() => onSelect(spread)}
