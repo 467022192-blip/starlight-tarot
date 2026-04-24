@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import TarotCard from '../components/card/TarotCard'
 import useTarotDraw from '../hooks/useTarotDraw'
+import { generateReading } from '../utils/interpretation'
+import SPREADS from '../data/spreads'
 
 export default function DailyPage() {
   const { drawnCards, isDrawing, draw, reset } = useTarotDraw()
@@ -18,6 +20,12 @@ export default function DailyPage() {
   }
 
   const card = drawnCards[0]
+
+  const reading = useMemo(() => {
+    if (!card) return null
+    const readings = generateReading([card], SPREADS[0])
+    return readings[0]
+  }, [card])
 
   if (hasDrawn && !card) return null
 
@@ -68,7 +76,7 @@ export default function DailyPage() {
               <button
                 onClick={handleDraw}
                 disabled={isDrawing}
-                className="px-8 py-3 bg-mystic-gold/15 border border-mystic-gold/50 text-mystic-gold rounded-xl hover:bg-mystic-gold/25 hover:border-mystic-gold transition-all duration-300 text-base disabled:opacity-50 shadow-lg shadow-mystic-gold/5"
+                className="px-8 py-3 bg-mystic-gold/15 border border-mystic-gold/50 text-mystic-gold rounded-xl hover:bg-mystic-gold/25 hover:border-mystic-gold transition-all duration-300 text-base disabled:opacity-50 shadow-lg shadow-mystic-gold/5 cursor-pointer"
               >
                 抽取今日牌
               </button>
@@ -80,47 +88,48 @@ export default function DailyPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
             >
-              <TarotCard card={card} isReversed={card.isReversed} size="lg" delay={0.2} />
+              <TarotCard card={card} isReversed={card.isReversed} size="lg" delay={0.2} autoFlip flipDelay={0.6} />
 
-              <motion.div
-                className="mt-8 p-5 sm:p-6 rounded-2xl bg-mystic-surface/80 border border-mystic-border/60 w-full max-w-md backdrop-blur-sm"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-              >
-                <div className="text-center mb-4">
-                  <h2 className="text-mystic-gold text-xl font-bold font-display">{card.name}</h2>
-                  <p className="text-mystic-text-muted text-sm">{card.nameEn}</p>
-                  {card.isReversed && (
-                    <span className="inline-block mt-1 px-2.5 py-0.5 bg-mystic-purple/20 text-mystic-purple text-xs rounded-full border border-mystic-purple/30">
-                      逆位
-                    </span>
-                  )}
-                  {!card.isReversed && (
-                    <span className="inline-block mt-1 px-2.5 py-0.5 bg-mystic-gold/10 text-mystic-gold text-xs rounded-full border border-mystic-gold/20">
-                      正位
-                    </span>
-                  )}
-                </div>
-                <div className="space-y-3 text-sm">
-                  <div className="p-3 rounded-lg bg-mystic-bg/50">
-                    <span className="text-mystic-gold text-xs font-bold block mb-1">关键词</span>
-                    <span className="text-mystic-text">{card.isReversed ? card.reversed : card.upright}</span>
+              {reading && (
+                <motion.div
+                  className="mt-8 p-5 sm:p-6 rounded-2xl bg-mystic-surface/80 border border-mystic-border/60 w-full max-w-md backdrop-blur-sm"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.2 }}
+                >
+                  <div className="text-center mb-4">
+                    <h2 className="text-mystic-gold text-xl font-bold font-display">{card.name}</h2>
+                    <p className="text-mystic-text-muted text-sm">{card.nameEn}</p>
+                    {card.isReversed ? (
+                      <span className="inline-block mt-1 px-2.5 py-0.5 bg-mystic-purple/20 text-mystic-purple text-xs rounded-full border border-mystic-purple/30">
+                        逆位
+                      </span>
+                    ) : (
+                      <span className="inline-block mt-1 px-2.5 py-0.5 bg-mystic-gold/10 text-mystic-gold text-xs rounded-full border border-mystic-gold/20">
+                        正位
+                      </span>
+                    )}
                   </div>
-                  <div className="p-3 rounded-lg bg-mystic-bg/50">
-                    <span className="text-mystic-gold text-xs font-bold block mb-1">解读</span>
-                    <span className="text-mystic-text leading-relaxed">{card.description}</span>
+                  <div className="space-y-3 text-sm">
+                    <div className="p-3 rounded-lg bg-mystic-bg/50">
+                      <span className="text-mystic-gold text-xs font-bold block mb-1">关键词</span>
+                      <p className="text-mystic-text">{reading.meaning}</p>
+                    </div>
+                    <div className="p-3 rounded-lg bg-mystic-bg/50">
+                      <span className="text-mystic-gold text-xs font-bold block mb-1">深度解读</span>
+                      <p className="text-mystic-text leading-relaxed">{reading.deepReading}</p>
+                    </div>
+                    <div className="p-3 rounded-lg bg-mystic-gold/5 border border-mystic-gold/10">
+                      <span className="text-mystic-gold text-xs font-bold block mb-1">今日建议</span>
+                      <p className="text-mystic-text leading-relaxed">{reading.advice}</p>
+                    </div>
                   </div>
-                  <div className="p-3 rounded-lg bg-mystic-bg/50">
-                    <span className="text-mystic-gold text-xs font-bold block mb-1">今日建议</span>
-                    <span className="text-mystic-text leading-relaxed">{card.advice}</span>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              )}
 
               <button
                 onClick={handleReset}
-                className="mt-6 px-6 py-2.5 border border-mystic-border/60 text-mystic-text-muted rounded-xl hover:border-mystic-gold/40 hover:text-mystic-gold transition-all duration-300 text-sm"
+                className="mt-6 px-6 py-2.5 border border-mystic-border/60 text-mystic-text-muted rounded-xl hover:border-mystic-gold/40 hover:text-mystic-gold transition-all duration-300 text-sm cursor-pointer"
               >
                 重新抽取
               </button>

@@ -15,6 +15,7 @@ export default function ReadingCard({ reading, index }) {
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <h4 className="text-mystic-gold font-bold font-display">{reading.card.name}</h4>
+            <span className="text-mystic-text-muted text-xs">{reading.card.nameEn}</span>
             {reading.isReversed ? (
               <span className="px-2 py-0.5 bg-mystic-purple/20 text-mystic-purple text-xs rounded-full border border-mystic-purple/30">
                 逆位
@@ -25,17 +26,20 @@ export default function ReadingCard({ reading, index }) {
               </span>
             )}
           </div>
-          <p className="text-mystic-text-muted text-xs mb-2">{reading.positionDesc}</p>
-          <div className="space-y-1.5 text-sm">
-            <p className="text-mystic-text">
-              <span className="text-mystic-gold/80 text-xs font-bold">关键词：</span>{reading.meaning}
-            </p>
-            <p className="text-mystic-text">
-              <span className="text-mystic-gold/80 text-xs font-bold">解读：</span>{reading.description}
-            </p>
-            <p className="text-mystic-text">
-              <span className="text-mystic-gold/80 text-xs font-bold">建议：</span>{reading.advice}
-            </p>
+          <p className="text-mystic-text-muted text-xs mb-3">{reading.positionDesc}</p>
+          <div className="space-y-3 text-sm">
+            <div className="p-3 rounded-lg bg-mystic-bg/40">
+              <span className="text-mystic-gold/80 text-xs font-bold block mb-1">关键词</span>
+              <p className="text-mystic-text">{reading.meaning}</p>
+            </div>
+            <div className="p-3 rounded-lg bg-mystic-bg/40">
+              <span className="text-mystic-gold/80 text-xs font-bold block mb-1">深度解读</span>
+              <p className="text-mystic-text leading-relaxed">{reading.deepReading || reading.description}</p>
+            </div>
+            <div className="p-3 rounded-lg bg-mystic-gold/5 border border-mystic-gold/10">
+              <span className="text-mystic-gold/80 text-xs font-bold block mb-1">塔罗建议</span>
+              <p className="text-mystic-text leading-relaxed">{reading.advice}</p>
+            </div>
           </div>
         </div>
       </div>

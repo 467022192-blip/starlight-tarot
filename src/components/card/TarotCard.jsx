@@ -1,8 +1,15 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
-export default function TarotCard({ card, isReversed = false, onClick, delay = 0, size = 'md' }) {
+export default function TarotCard({ card, isReversed = false, onClick, delay = 0, size = 'md', autoFlip = false, flipDelay = 0.8 }) {
   const [isFlipped, setIsFlipped] = useState(false)
+
+  useEffect(() => {
+    if (autoFlip && !isFlipped) {
+      const timer = setTimeout(() => setIsFlipped(true), (delay + flipDelay) * 1000)
+      return () => clearTimeout(timer)
+    }
+  }, [autoFlip, delay, flipDelay, isFlipped])
 
   const sizeClasses = {
     sm: 'w-16 h-28 sm:w-20 sm:h-32',
@@ -32,7 +39,7 @@ export default function TarotCard({ card, isReversed = false, onClick, delay = 0
 
   const cardFront = (
     <div
-      className={`${sizeClasses[size]} rounded-xl border-2 border-mystic-gold bg-mystic-card p-2 sm:p-3 flex flex-col items-center justify-center text-center cursor-pointer shadow-lg shadow-mystic-gold/10`}
+      className={`${sizeClasses[size]} rounded-xl border-2 border-mystic-gold bg-mystic-card p-2 sm:p-3 flex flex-col items-center justify-center text-center shadow-lg shadow-mystic-gold/10`}
       style={{
         backgroundImage: `radial-gradient(circle at 50% 30%, rgba(212,175,55,0.08) 0%, transparent 60%)`,
         transform: isReversed ? 'rotate(180deg)' : 'none',
@@ -59,7 +66,19 @@ export default function TarotCard({ card, isReversed = false, onClick, delay = 0
       onClick={handleClick}
       className="select-none"
     >
-      {isFlipped ? cardFront : cardBack}
+      <motion.div
+        initial={{ rotateY: 0 }}
+        animate={{ rotateY: isFlipped ? 180 : 0 }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
+        style={{ transformStyle: 'preserve-3d', perspective: 800 }}
+      >
+        <div style={{ backfaceVisibility: 'hidden', position: isFlipped ? 'absolute' : 'relative' }}>
+          {cardBack}
+        </div>
+        <div style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)', position: isFlipped ? 'relative' : 'absolute' }}>
+          {cardFront}
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
